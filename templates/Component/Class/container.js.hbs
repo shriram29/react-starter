@@ -1,0 +1,19 @@
+/* eslint-disable */
+import { connect } from 'react-redux'
+import {{pascalCase name}} from './{{pascalCase name}}'
+import {
+    sampleModuleFuntion,
+} from './module'
+
+const mapActionCreators = {
+    sampleModuleFuntion,
+}
+
+const mapStateToProps = state => ({
+  browser: state.app.browser,
+})
+
+export default connect(
+  mapStateToProps,
+  mapActionCreators
+)({{pascalCase name}})

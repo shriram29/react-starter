@@ -1,0 +1,53 @@
+/* eslint-disable */
+import { getDataSource } from 'legacy/store/appReducer'
+import { ROUTES, DATASOURCES, CLEAR_STATE } from 'legacy/constants'
+import history from 'legacy/containers/History'
+
+// ------------------------------------
+// Constants
+// ------------------------------------
+const PREFIX = '{{pascalCase name}}.'
+export const SAMPLE_CONSTANT = `${PREFIX}SAMPLE_CONSTANT`
+
+// ------------------------------------
+// Actions
+// ------------------------------------
+export const sampleAction = () => ({
+  type: SAMPLE_CONSTANT,
+  payload: 'sampleText',
+})
+
+// ------------------------------------
+// Action Creators
+// ------------------------------------
+export const sampleModuleFuntion = () => (dispatch, getState) => {
+  const meDataSource = getDataSource(getState(), DATASOURCES.ME)
+  dispatch(sampleAction(meDataSource))
+}
+
+// ------------------------------------
+// Initial State
+// ------------------------------------
+
+const initialState = {
+  sampleState: '',
+}
+
+
+// ------------------------------------
+// Action Handlers
+// ------------------------------------
+const ACTION_HANDLERS = {
+  [SAMPLE_CONSTANT]: (state, action) => ({
+    ...state, sampleState: action.payload,
+  }),
+  [CLEAR_STATE]: (state, action) => ({ ...initialState }),
+}
+
+// ------------------------------------
+// Reducer
+// ------------------------------------
+export default function {{camelCase name}}Reducer(state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+  return handler ? handler(state, action) : state
+}

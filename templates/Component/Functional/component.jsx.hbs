@@ -1,0 +1,34 @@
+/* eslint-disable */
+// import lib(s)
+import React, { useEffect, useState } from 'react';
+{{#if needRedux}}
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement, setCount } from './{{pascalCase name}}Slice';
+{{/if}}
+import styles from "./{{pascalCase name}}.module.css";
+
+
+const {{pascalCase name}} = () => {
+    {{#if needRedux}}
+    const dispatch = useDispatch()
+    const count = useSelector((state) => state.{{pascalCase name}}.value)
+    {{/if}}
+    
+    
+    return (
+        <React.Fragment>
+            <div className={styles.root}>
+                {{pascalCase name}} Component
+            </div>
+                {{#if needRedux}}
+                <div>
+                    &nbsp;<button onClick={() => dispatch(increment())}>+</button>&nbsp;
+                    <input type="number" value={count} onChange={(e) => dispatch(setCount(e.target.value))} />
+                    &nbsp;<button onClick={() => dispatch(decrement())}>-</button>&nbsp;
+                </div>
+                {{/if}}
+        </React.Fragment>
+    );
+}
+
+export default {{pascalCase name}}
