@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement, setCount } from './HomeSlice';
-import logo from '/src/Static/favicon.svg'
+import logo from '../../Static/favicon.svg'
 import "./Home.css";
 
-import Favicon from '/src/Static/favicon.svg'
+import Favicon from '../../Static/favicon.svg'
 
 const Home = () => {
     const dispatch = useDispatch()
